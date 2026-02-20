@@ -11,7 +11,7 @@ if (empty($resultado)) {
 
 $nombre_empleado = '';
 $empleado = mysqli_fetch_array($result);
-    $nombre_empleado = $empleado['Nombre'] . " " . $empleado['Apellido'];
+$nombre_empleado = $empleado['Nombre'] . " " . $empleado['Apellido'];
 
 ?>
 
@@ -25,7 +25,7 @@ $empleado = mysqli_fetch_array($result);
     <link rel="shortcut icon" href="./assets/img/logo_icono_x_ray.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/Style/editar.css">
-        <link rel="shortcut icon" href="../assets/img/logo_icono_x_ray.png" type="image/png">
+    <link rel="shortcut icon" href="../assets/img/logo_icono_x_ray.png" type="image/png">
 
 
 </head>
@@ -62,7 +62,7 @@ $empleado = mysqli_fetch_array($result);
             <a href="registrar_patologia.php" class="nav-item">
                 <i class="fas fa-notes-medical"></i>
                 <span>PATOLOGÍAS</span>
-            </a>    
+            </a>
             <a href="cerrar_session.php" class="nav-item">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>SALIR</span>
@@ -71,12 +71,12 @@ $empleado = mysqli_fetch_array($result);
 
         <div class="user-info">
             <div class="user-avatar">
-                 <a href="configurar.php">
-                           <?php if (empty($empleado['Foto'])): ?>
-                <img src="../assets/img/icono_doctor.png" alt="Doctor">
-            <?php else: ?>
-                <img src="../assets/upload/<?php echo htmlspecialchars($empleado['Foto']); ?>" alt="Foto de perfil">
-            <?php endif; ?>
+                <a href="configurar.php">
+                    <?php if (empty($empleado['Foto'])): ?>
+                        <img src="../assets/img/icono_doctor.png" alt="Doctor">
+                    <?php else: ?>
+                        <img src="../assets/upload/<?php echo htmlspecialchars($empleado['Foto']); ?>" alt="Foto de perfil">
+                    <?php endif; ?>
                 </a>
             </div>
             <div class="user-name">
@@ -109,7 +109,7 @@ $empleado = mysqli_fetch_array($result);
     <main class="main-content">
         <div class="section-header">
             <h1>Editar Diagnóstico</h1>
-            <p>Ingrese el ID del paciente para acceder y modificar los diagnósticos existentes</p>
+            <p>Ingrese el ID del diagnostico para acceder y modificar los diagnósticos existentes</p>
         </div>
 
         <div class="diagnostic-container">
@@ -117,7 +117,7 @@ $empleado = mysqli_fetch_array($result);
                 <h2>Ingrese el ID del Diagnóstico</h2>
                 <form action="editar3.php" method="POST">
                     <div class="input-group">
-                        <input type="text" name="id" placeholder="Cédula del paciente" required>
+                        <input type="text" name="id" placeholder="Id del diagnóstico" required>
                         <button type="submit" class="submit-btn">
                             <i class="fas fa-paper-plane"></i> Buscar Diagnóstico
                         </button>

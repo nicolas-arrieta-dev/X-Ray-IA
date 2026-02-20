@@ -231,10 +231,6 @@ $result_paciente = $objconsulta->Consultar_todo_paciente();
                         <i class="fas fa-trash-alt"></i> Eliminar imagen
                     </button>
                 </div>
-
-                <a href="../editar.php" class="analyze-btn">
-                    <i class="fas fa-brain"></i> ANALIZAR IMAGEN
-                </a>
             </div>
 
             <div class="form-actions">

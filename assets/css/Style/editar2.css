@@ -613,7 +613,7 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
+  }
 
   .status-indicator {
     position: static;

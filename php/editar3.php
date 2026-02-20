@@ -402,19 +402,6 @@ if (empty($resultado)) {
                 </button><br>
                 </form>
                 <div class="action-buttons">
-                    <form method="POST" action="editar2.php" class="action-form">
-                        <input type="hidden" name="id" value="<?php echo $radiografia['ID']; ?>">
-                        <button type="submit" class="btn-action btn-report">
-                            <i class="fas fa-file-medical-alt"></i>
-                            Generar Informe
-                        </button>
-                    </form>
-
-                    <button class="btn-action btn-print">
-                        <i class="fas fa-print"></i>
-                        Imprimir Diagnóstico
-                    </button>
-
                     <button class="btn-action btn-update">
                         <i class="fas fa-sync-alt"></i>
                         Actualizar Datos

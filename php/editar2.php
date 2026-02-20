@@ -119,24 +119,6 @@ $nombre_empleado = $empleado['Nombre'] . " " . $empleado['Apellido'];
             <div class="form-section">
                 <h2>Imagen Original</h2>
 
-                <div class="action-buttons">
-                    <button class="action-btn">
-                        <i class="fas fa-brain"></i> Análisis IA
-                    </button>
-                    <button class="action-btn">
-                        <i class="fas fa-diagnoses"></i> Diagnóstico IA
-                    </button>
-                    <button class="action-btn">
-                        <i class="fas fa-print"></i> Imprimir
-                    </button>
-                    <button class="action-btn">
-                        <i class="fas fa-save"></i> Guardar
-                    </button>
-                    <button class="action-btn">
-                        <i class="fas fa-arrow-left"></i> Regresar
-                    </button>
-                </div>
-
                 <div class="image-container">
                     <div style="width: 100%; border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden;">
                         <?php

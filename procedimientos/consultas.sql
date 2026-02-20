@@ -109,6 +109,7 @@ SELECT
     d.Fecha_hora,
     r.Fecha_hora AS Fecha_radiografia,
     pa.Nombres AS Nombre_paciente,
+    pa.Apellidos AS Apellido_paciente,
 	z.Nombre_zona AS Zona_radiografiada,
     p.Nombre_patologia
     

@@ -94,3 +94,59 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+function confirmDelete(id) {
+    if (confirm("¿Estás seguro de que deseas eliminar esta Radiografia?")) {
+        fetch('eliminar_radiografia.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'id=' + encodeURIComponent(id)
+        })
+        .then(response => response.text())
+        .then(data => {
+            if (data.trim() === 'ok') {
+                 window.location.href = `consultar.php?ms=✅La radiografía se eliminó correctamente&type=ok`;
+            } else {
+                window.location.href = `consultar.php?ms=❌Error al eliminar la radiografía&type=error`;
+            }
+        })
+        .catch(error => {
+            console.error("Error de red:", error);
+            window.location.href = `consultar.php?ms=❌No se pudo encontrar el servidor&type=error`;
+        });;
+    }
+}
+
+
+const params = new URLSearchParams(window.location.search);
+const message = params.get('ms');
+const type = params.get('type');
+
+if (message && type) {
+    const notification = document.getElementById('notification');
+    const messageSpan = document.getElementById('notification-message');
+
+    // Set message
+    messageSpan.textContent = message;
+
+    // Set background color
+    if (type === 'ok') {
+        notification.style.backgroundColor = '#23c483'; // verde
+    } else if (type === 'error') {
+        notification.style.backgroundColor = '#e74c3c'; // rojo
+    }
+
+    // Mostrar
+    notification.style.display = 'block';
+
+    // Ocultar automáticamente luego de 4 segundos
+    setTimeout(() => {
+        notification.style.display = 'none';
+    }, 4000);
+}
+
+function closeNotification() {
+    document.getElementById('notification').style.display = 'none';
+}

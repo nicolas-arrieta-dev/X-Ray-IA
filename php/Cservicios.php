@@ -91,7 +91,7 @@ function Registrar_paciente($id_paciente, $nombres, $apellidos, $direccion, $fec
         }
     } catch (mysqli_sql_exception $e) {
         if ($e->getCode() == 1062) {
-            return ['success' => false, 'error' => 'El Paciente ya está registrado'];
+            return ['success' => false, 'error' => 'La Radiografia se ha registrado correctamente'];
         } else {
             return ['success' => false, 'error' => 'Error de base de datos: ' . $e->getMessage()];
         }
@@ -282,6 +282,56 @@ function Actualizar_diagnostico($id_r, $id_patologia, $descripcion, $nivel_grave
         }
     }
 }
+Function Buscar_ArchivoRadiografia($id_radiografia){
+    $conexion = $this->createConnection();
+    $sql = "CALL Consultar_ArchivoRadiografia(?)";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("i", $id_radiografia);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+    return $resultado;
+}
 
+Function Eliminar_Radiografia($id_radiografia){
+ $conexion = $this->createConnection();
+    $sql = "CALL Eliminar_Radiografia(?)";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("i", $id_radiografia);
+    if ($stmt->execute()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+Function Consultar_paciente($Id_Paciente){
+    $conexion = $this->createConnection();
+    $sql = "CALL Consultar_Paciente(?)";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("i", $Id_Paciente);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+    return $resultado;
+}
+
+Function Actualizar_Paciente($id_paciente, $nombres, $apellidos, $direccion, $fecha_nacimiento, $email, $celular, $genero){ 
+    $conexion = $this->createConnection();
+    $sql = "CALL Actualizar_Paciente(?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("isssssss", $id_paciente, $nombres, $apellidos, $direccion, $fecha_nacimiento, $email, $celular, $genero);
+
+    try {
+        if ($stmt->execute()) {
+            return ['success' => true];
+        } else {
+            return ['success' => false, 'error' => 'Error al ejecutar el procedimiento'];
+        }
+    } catch (mysqli_sql_exception $e) {
+        if ($e->getCode() == 1062) {
+            return ['success' => false, 'error' => 'El Paciente ya está registrado'];
+        } else {
+            return ['success' => false, 'error' => 'Error de base de datos: ' . $e->getMessage()];
+        }
+    }
+}
 }
 ?>

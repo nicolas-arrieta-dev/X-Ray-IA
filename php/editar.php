@@ -115,7 +115,7 @@ $nombre_empleado = $empleado['Nombre'] . " " . $empleado['Apellido'];
         <div class="diagnostic-container">
             <div class="form-section">
                 <h2>Ingrese el ID del Diagnóstico</h2>
-                <form action="editar3.php" method="POST">
+                <form action="editar3.php" method="GET">
                     <div class="input-group">
                         <input type="text" name="id" placeholder="Id del diagnóstico" required>
                         <button type="submit" class="submit-btn">

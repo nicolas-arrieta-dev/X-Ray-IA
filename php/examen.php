@@ -166,7 +166,7 @@ $result_paciente = $objconsulta->Consultar_todo_paciente();
 
                 <div class="form-group">
                     <label for="edad">Edad</label>
-                    <input id="edad" name="edad" type="number" required>
+                    <input id="edad" name="edad" type="number" readonly required>
                 </div>
 
                 <div class="form-group">

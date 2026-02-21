@@ -1,5 +1,6 @@
 <?php
-$ID_Radiografia = $_POST['id'];
+//$ID_Radiografia = $_POST['id'];
+$ID_Radiografia = $_GET['id'] ?? null;
 include_once("Cservicios.php");
 $objconsulta = new cCliente;
 $resultado = $objconsulta->Usuario_logueado();
@@ -402,11 +403,15 @@ if (empty($resultado)) {
                 </button><br>
                 </form>
                 <div class="action-buttons">
-                    <button class="btn-action btn-update">
+
+                <form action="actualizar_datos_paciente.php" method="POST">
+                    <input type="hidden" name="id" value="<?php echo $radiografia['Cedula paciente']; ?>">
+                    <button type="submit" class="btn-action btn-update">
                         <i class="fas fa-sync-alt"></i>
-                        Actualizar Datos
+                        Actualizar Datos Paciente
                     </button>
                 </div>
+                </form>
             </div>
         </div>
     </main>

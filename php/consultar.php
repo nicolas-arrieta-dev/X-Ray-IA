@@ -24,6 +24,38 @@ $nombre_medico = $empleado['Nombre'] . " " . $empleado['Apellido'];
         background-color: #f0f0ff;
         border-left: 4px solid #7a00cc;
     }
+    .delete-btn {
+    background-color: #ff4d4f;
+    color: white;
+    }
+    .action-btn2 {
+        padding: 10px 15px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        gap: 8px;
+        border: none;
+        min-width: 100px;
+        margin-top: 5px;
+    }
+    .action-btn2:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    @media (max-width: 768px) {
+        .action-cell {
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .action-btn {
+            width: 100%;
+        }
+    }
 </style>
 
 <head>
@@ -129,7 +161,7 @@ $nombre_medico = $empleado['Nombre'] . " " . $empleado['Apellido'];
                             <i class="fas fa-image"></i>
                             <span>Seleccione un diagnóstico</span>
                         </div>
-                        <img id="previewImage" src="" alt="Vista previa">
+                        <img id="previewImage" src="" alt="">
                     </div>
                 </div>
             </div>
@@ -209,12 +241,17 @@ $nombre_medico = $empleado['Nombre'] . " " . $empleado['Apellido'];
                                     </td>
                                     <td class="archivo-radiografia"><?php echo $radiografia['Archivo_radiografia']; ?></td>
                                     <td>
-                                        <form method="POST" action="editar3.php">
+                                        <form method="GET" action="editar3.php">
                                             <input type="hidden" name="id" value="<?php echo $radiografia['ID']; ?>">
                                             <button type="submit" class="action-btn">
                                                 <i class="fas fa-play"></i> Analizar
                                             </button>
                                         </form>
+                                           
+                                            <button class="delete-btn action-btn2" onclick="confirmDelete('<?php echo $radiografia['ID']; ?>')">
+                                                <i class="fas fa-trash"></i> Eliminar
+                                            </button>
+
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -225,6 +262,10 @@ $nombre_medico = $empleado['Nombre'] . " " . $empleado['Apellido'];
         </div>
     </main>
 </body>
+    <div class="notification" id="notification" style="display: none;">
+        <span id="notification-message"></span>
+        <span class="close" onclick="closeNotification()">&times;</span>
+    </div>
 
 <script src="../assets/js/consultar.js"></script>
 

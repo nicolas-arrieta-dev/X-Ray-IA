@@ -126,3 +126,15 @@ CREATE PROCEDURE Consultar_Diagnostico(in ide varchar(100))
 BEGIN
 SELECT * from diagnostico WHERE id_diagnostico = ide;
 END
+//////////////////////////-consultar ArchivoRadiografia-///////////////////////////////////////
+DELIMITER //
+CREATE PROCEDURE Consultar_ArchivoRadiografia(in p_Id_radiografia varchar(100))
+BEGIN
+SELECT Archivo_Radiografia FROM radiografia WHERE Id_radiografia = p_Id_radiografia;
+END
+//////////////////////////-consultar Paciente-///////////////////////////////////////
+DELIMITER //
+CREATE PROCEDURE Consultar_Paciente(in p_Id_paciente varchar(100))
+BEGIN
+SELECT * FROM paciente WHERE Id_paciente = p_Id_paciente;
+END

@@ -175,4 +175,42 @@ BEGIN
         Nivel_gravedad = p_Nivel_gravedad
     WHERE Id_diagnostico = p_Id_diagnostico;
 END 
+/////////////////////////////////-eliminar radiografia-////////////////////////////////
+DELIMITER //
 
+CREATE PROCEDURE Eliminar_Radiografia(
+    IN p_Id_radiografia varchar(100)
+)
+BEGIN
+
+    DELETE FROM radiografia
+    WHERE Id_radiografia = p_Id_radiografia;
+
+END;
+///////////////////////////////////- actualizar datos paciente-//////////////////////////////////////
+DELIMITER //
+
+CREATE PROCEDURE Actualizar_Paciente(
+    IN p_Id_paciente VARCHAR(100),
+    IN p_Nombres VARCHAR(100),
+    IN p_Apellidos VARCHAR(100),
+    IN p_Direccion VARCHAR(200),
+    IN p_Fecha_nacimiento DATE,
+    IN p_Email VARCHAR(150),
+    IN p_Celular VARCHAR(20),
+    IN p_Genero VARCHAR(20)
+)
+BEGIN
+
+    UPDATE paciente
+    SET
+        Nombres = p_Nombres,
+        Apellidos = p_Apellidos,
+        Direccion = p_Direccion,
+        Fecha_nacimiento = p_Fecha_nacimiento,
+        Email = p_Email,
+        Celular = p_Celular,
+        Genero = p_Genero
+    WHERE Id_paciente = p_Id_paciente;
+
+END

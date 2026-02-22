@@ -54,7 +54,7 @@ function cerrar_session(){
     $id = 0;
     session_start();
     session_destroy();
-    header("Location: ../index.html");
+    header("Location: ../login.html");
     exit();
     return true;
 }

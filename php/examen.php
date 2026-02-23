@@ -126,7 +126,7 @@ $result_paciente = $objconsulta->Consultar_todo_paciente();
                     <input id="id" name="id" type="number" list="pacieenteList" required>
                     <datalist id="pacieenteList">
                         <?php while ($paciente = mysqli_fetch_assoc($result_paciente)) : ?>
-                            <option value="<?php echo htmlspecialchars($paciente['Id_paciente'], ENT_QUOTES, 'UTF-8'); ?>">
+                            <option value="<?php echo htmlspecialchars($paciente['Cedula_Paciente'], ENT_QUOTES, 'UTF-8'); ?>">
                                 <?php echo htmlspecialchars($paciente['Nombres'] . ' ' . $paciente['Apellidos'], ENT_QUOTES, 'UTF-8'); ?>
                             </option>
                         <?php endwhile; ?>
@@ -251,7 +251,7 @@ $result_paciente = $objconsulta->Consultar_todo_paciente();
                             mysqli_data_seek($result_paciente, 0); // Reiniciar puntero
                             $paciente_data = [];
                             while ($p = mysqli_fetch_assoc($result_paciente)) {
-                                $paciente_data[$p['Id_paciente']] = [
+                                $paciente_data[$p['Cedula_Paciente']] = [
                                     'nombres' => $p['Nombres'],
                                     'apellidos' => $p['Apellidos'],
                                     'direccion' => $p['Direccion'],

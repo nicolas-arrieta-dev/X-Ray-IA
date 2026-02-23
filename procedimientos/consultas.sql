@@ -1,6 +1,6 @@
-////////////////-VERIFICAR USUARIO-////////////////////
 DELIMITER //
-
+-- VERIFICAR USUARIO
+DROP PROCEDURE IF EXISTS verificar_usuario//
 CREATE PROCEDURE verificar_usuario(
     IN p_id VARCHAR(100),
     IN p_contrasena VARCHAR(100)
@@ -9,31 +9,34 @@ BEGIN
     SELECT *
     FROM empleado
     WHERE Cedula = p_id AND Password = p_contrasena;
-END
-/////////////////////////-CONSULTAR EMPLEADO-///////////////////////////////////////
-DELIMITER //
+END//
+-- CONSULTAR EMPLEADO
+DROP PROCEDURE IF EXISTS Consultar_empleado//
 CREATE PROCEDURE Consultar_empleado(ide varchar(100))
 BEGIN
 SELECT *
 FROM empleado
 WHERE Cedula = ide;
-END
-/////////////////////////-MOSTRAR TODO CATEGORIA-///////////////////////////////////////
-DELIMITER //
+END//
+
+-- MOSTRAR TODO CATEGORIA
+DROP PROCEDURE IF EXISTS Mostrar_todo_categoria//
 CREATE PROCEDURE Mostrar_todo_categoria()
 BEGIN
 SELECT *
 FROM categoria;
-END
-/////////////////////////-MOSTRAR TODO ZONA-///////////////////////////////////////
-DELIMITER //
+END//
+
+-- MOSTRAR TODO ZONA
+DROP PROCEDURE IF EXISTS Mostrar_todo_zona//
 CREATE PROCEDURE Mostrar_todo_zona()
 BEGIN
 SELECT *
 FROM zona;
-END
-////////////////////////////////-MOSTRAR TODO RADIOGRAFIA-///////////////////////////////////////
-DELIMITER //
+END//
+
+-- MOSTRAR TODO RADIOGRAFIA
+DROP PROCEDURE IF EXISTS Mostrar_todo_radiografia//
 CREATE PROCEDURE Mostrar_todo_radiografia()
 BEGIN
 SELECT 
@@ -44,7 +47,7 @@ SELECT
     z.Nombre_zona AS Zona,
     c.Nombre_categoria AS Categoria,
     CONCAT(e.Nombre, ' ', e.Apellido) AS nombre_empleado,
-    p.Id_paciente AS "Cedula paciente",
+    p.Cedula_Paciente AS "Cedula paciente",
     p.Fecha_nacimiento,
     CONCAT(p.Nombres, ' ', p.Apellidos) AS "Nombre completo",
     p.Genero
@@ -53,11 +56,13 @@ FROM
 INNER JOIN zona z ON r.Id_zona = z.Id_zona
 INNER JOIN categoria c ON r.Id_categoria = c.Id_categoria
 INNER JOIN empleado e ON r.Id_empleado = e.Cedula
-INNER JOIN paciente p ON r.Id_paciente = p.Id_paciente;
+INNER JOIN paciente p ON r.Id_paciente = p.Id_paciente
+WHERE r.EstadoActivo = 1
+ORDER BY r.Fecha_hora DESC;
+END//
 
-END
-/////////////////////////-CONSULTAR RADIOGRAFIA-///////////////////////////////////////
-DELIMITER //
+-- CONSULTAR RADIOGRAFIA
+DROP PROCEDURE IF EXISTS Consultar_radiografia//
 CREATE PROCEDURE Consultar_radiografia(ide varchar(100))
 BEGIN
 SELECT 
@@ -68,7 +73,8 @@ SELECT
     z.Nombre_zona AS Zona,
     c.Nombre_categoria AS Categoria,
     CONCAT(e.Nombre, ' ', e.Apellido) AS nombre_empleado,
-    p.Id_paciente AS "Cedula paciente",
+    p.Cedula_Paciente AS "Cedula paciente",
+    p.Id_paciente,
     p.Fecha_nacimiento,
     CONCAT(p.Nombres, ' ', p.Apellidos) AS "Nombre completo",
     p.Genero
@@ -80,24 +86,27 @@ INNER JOIN empleado e ON r.Id_empleado = e.Cedula
 INNER JOIN paciente p ON r.Id_paciente = p.Id_paciente
 WHERE r.Id_radiografia = ide;
 
-END
-//////////////////////////////////////- Mostrar todo patologia -///////////////////////////////////////
-DELIMITER //
+END//
+
+-- MOSTRAR TODO PATOLOGIA
+DROP PROCEDURE IF EXISTS Mostrar_todo_patologia//
 CREATE PROCEDURE Mostrar_todo_patologia()
 BEGIN
 SELECT * FROM patologia;
-END
-//////////////////////////////////////- Eliminar patologia -///////////////////////////////////////DELIMITER //
-DELIMITER //
+END//
+
+-- ELIMINAR PATOLOGIA
+DROP PROCEDURE IF EXISTS Eliminar_patologia//
 CREATE PROCEDURE Eliminar_patologia (
     IN p_Id_patologia varchar(100)
 )
 BEGIN
     DELETE FROM patologia
     WHERE Id_patologia = p_Id_patologia;
-END
-////////////////////////////////////////- Mostrar todo diagnostico -///////////////////////////////////////
-DELIMITER //
+END//
+
+-- MOSTRAR TODO DIAGNOSTICO
+DROP PROCEDURE IF EXISTS Mostrar_todo_diagnostico//
 CREATE PROCEDURE Mostrar_todo_diagnostico()
 BEGIN
 SELECT 
@@ -119,21 +128,24 @@ INNER JOIN zona z ON r.Id_zona = z.Id_zona
 INNER JOIN patologia p ON d.Id_patologia = p.Id_patologia
 INNER JOIN paciente pa ON r.Id_paciente = pa.Id_paciente;
 
-END
-//////////////////////////-consultar diagnostico-///////////////////////////////////////
-DELIMITER //
+END//
+
+-- CONSULTAR DIAGNOSTICO
+DROP PROCEDURE IF EXISTS Consultar_Diagnostico//
 CREATE PROCEDURE Consultar_Diagnostico(in ide varchar(100))
 BEGIN
 SELECT * from diagnostico WHERE id_diagnostico = ide;
-END
-//////////////////////////-consultar ArchivoRadiografia-///////////////////////////////////////
-DELIMITER //
+END//
+
+-- CONSULTAR ARCHIVO RADIOGRAFIA
+DROP PROCEDURE IF EXISTS Consultar_ArchivoRadiografia//
 CREATE PROCEDURE Consultar_ArchivoRadiografia(in p_Id_radiografia varchar(100))
 BEGIN
 SELECT Archivo_Radiografia FROM radiografia WHERE Id_radiografia = p_Id_radiografia;
-END
-//////////////////////////-consultar Paciente-///////////////////////////////////////
-DELIMITER //
+END//
+
+-- CONSULTAR PACIENTE
+DROP PROCEDURE IF EXISTS Consultar_Paciente//
 CREATE PROCEDURE Consultar_Paciente(in p_Id_paciente varchar(100))
 BEGIN
 SELECT * FROM paciente WHERE Id_paciente = p_Id_paciente;

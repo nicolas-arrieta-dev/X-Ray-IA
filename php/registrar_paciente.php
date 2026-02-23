@@ -57,18 +57,34 @@ if (empty($id_paciente ) || empty($nombres) || empty($apellidos) || empty($direc
     exit;
 }else{
 include_once("Cservicios.php");
-$objconsulta = new cCliente;
-$resultado = $objconsulta->Registrar_paciente($id_paciente, $nombres, $apellidos, $direccion, $fecha_nacimiento, $email, $celular, $sexo);
-$resultado2 = $objconsulta->Registrar_radiografia($fechaHoraActual,$nombreArchivo, $observaciones, $zona, $categoria, $id_paciente);
-var_dump($resultado2);
 
+$objconsulta = new cCliente();
 
+$resultado = $objconsulta->Registrar_paciente($id_paciente,$nombres,$apellidos,$direccion,$fecha_nacimiento,$email,$celular,$sexo);
 
 if ($resultado['success']) {
+
+    $id_paciente_generado = $resultado['id_paciente'];
+
+    $resultado2 = $objconsulta->Registrar_radiografia(
+        $fechaHoraActual,
+        $nombreArchivo,
+        $observaciones,
+        $zona,
+        $categoria,
+        $id_paciente_generado
+    );
+
+    var_dump($resultado2);
+
     header("Location: examen.php?ms=✅Se ha registrado correctamente&type=ok");
+    exit();
+
 } else {
-    $msg = urlencode($resultado['error']); 
-    header("Location: examen.php?ms=$msg&type=ok");
+
+    $msg = urlencode($resultado['error']);
+    header("Location: examen.php?ms=$msg&type=error");
+    exit();
 }
 }
 

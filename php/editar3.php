@@ -405,7 +405,7 @@ if (empty($resultado)) {
                 <div class="action-buttons">
 
                 <form action="actualizar_datos_paciente.php" method="POST">
-                    <input type="hidden" name="id" value="<?php echo $radiografia['Cedula paciente']; ?>">
+                    <input type="hidden" name="id" value="<?php echo $radiografia['Id_paciente']; ?>">
                     <button type="submit" class="btn-action btn-update">
                         <i class="fas fa-sync-alt"></i>
                         Actualizar Datos Paciente

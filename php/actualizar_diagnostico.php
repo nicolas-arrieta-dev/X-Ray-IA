@@ -451,7 +451,7 @@ $diagnosticos = $objconsulta->Mostrar_todo_diagnosticos();
                                             ?>;">
                                 </div>
                             </div>
-                            <div class="confidence-value"><?php echo $diag['Porcentaje_confianza_IA']; ?>%</div>
+                            <div class="confidence-value"><?php echo $diag['Porcentaje_confianza_IA']; ?></div>
                         </td>
                         <td><?php echo $diag['Tipo_Fractura_IA']; ?></td>
                         <td><?php echo date('d/m/Y H:i', strtotime($diag['Fecha_hora'])); ?></td>
@@ -484,11 +484,12 @@ $diagnosticos = $objconsulta->Mostrar_todo_diagnosticos();
                 No se encontraron diagnósticos que coincidan con su búsqueda
             </div>
             
-            <div class="pagination" id="pagination">
+           <!-- <div class="pagination" id="pagination"> 
                 <button class="page-btn active">1</button>
                 <button class="page-btn">2</button>
                 <button class="page-btn">3</button>
             </div>
+            -->
         </div>
 
     </main>

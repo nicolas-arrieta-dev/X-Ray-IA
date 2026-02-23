@@ -117,7 +117,8 @@ $paciente = mysqli_fetch_array($result_paciente);
             <div class="form-grid">
                 <div class="form-group">
                     <label for="id">Identificación</label>
-                    <input id="id" name="id" type="number" value="<?php echo htmlspecialchars($paciente['Id_paciente']); ?>" list="pacieenteList" readonly>
+                    <input id="id" name="id" type="number" value="<?php echo htmlspecialchars($paciente['Cedula_Paciente']); ?>" list="pacieenteList" readonly>
+                    <input id="id_ai" name="id_ai" type="hidden" value="<?php echo htmlspecialchars($paciente['Id_paciente']); ?>">
                 </div>
 
                 <div class="form-group">
@@ -161,9 +162,10 @@ $paciente = mysqli_fetch_array($result_paciente);
 
             </div>
 
-            
-
             <div class="form-actions">
+            <button  type="button" class="remove-image-btn" onclick="confirmDelete('<?php echo htmlspecialchars($paciente['Id_paciente']); ?>')">
+                <i class="fas fa-trash"></i> Eliminar
+            </button>
                 <button type="submit" class="btn btn-save" >
                     <i class="fas fa-save"></i> Actualizar Datos Paciente
                 </button>

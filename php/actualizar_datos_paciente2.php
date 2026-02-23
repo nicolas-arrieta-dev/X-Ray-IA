@@ -1,5 +1,5 @@
 <?php 
-$id_paciente = $_POST['id'];
+$id_paciente = $_POST['id_ai'];
 $nombres = $_POST['nombres'];
 $apellidos = $_POST['apellidos']; 
 $direccion = $_POST['direccion'];

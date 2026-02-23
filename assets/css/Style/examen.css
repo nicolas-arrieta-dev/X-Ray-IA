@@ -407,13 +407,16 @@
        background: linear-gradient(to right, #e74c3c, #c0392b);
        color: white;
        border: none;
-       padding: 12px 20px;
-       border-radius: 10px;
+       padding: 16px 40px;
+       border-radius: 12px;
+       font-size: 1.1rem;
        font-weight: 600;
        cursor: pointer;
-       display: inline-flex;
+       transition: var(--transition);
+       display: flex;
        align-items: center;
-       gap: 8px;
+       gap: 12px;
+       margin-right: 10px;
        transition: var(--transition);
        box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
    }

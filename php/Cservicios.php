@@ -77,27 +77,48 @@ function Consultar_todo_paciente(){
   $resultado = $stmt->get_result();
   return $resultado;
 }
-function Registrar_paciente($id_paciente, $nombres, $apellidos, $direccion, $fecha_nacimiento, $email, $celular, $sexo) {
+function Registrar_paciente($Cedula_Paciente, $nombres, $apellidos, $direccion, $fecha_nacimiento, $email, $celular, $sexo) {
+
     $conexion = $this->createConnection();
+
     $sql = "CALL Registrar_paciente(?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conexion->prepare($sql);
-    $stmt->bind_param("isssssss", $id_paciente, $nombres, $apellidos, $direccion, $fecha_nacimiento, $email, $celular, $sexo);
+
+    $stmt->bind_param(
+        "isssssss",
+        $Cedula_Paciente,
+        $nombres,
+        $apellidos,
+        $direccion,
+        $fecha_nacimiento,
+        $email,
+        $celular,
+        $sexo
+    );
 
     try {
-        if ($stmt->execute()) {
-            return ['success' => true];
-        } else {
-            return ['success' => false, 'error' => 'Error al ejecutar el procedimiento'];
-        }
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        return [
+            'success' => true,
+            'id_paciente' => $row['Id_generado']
+        ];
+
     } catch (mysqli_sql_exception $e) {
+
         if ($e->getCode() == 1062) {
-            return ['success' => false, 'error' => 'La Radiografia se ha registrado correctamente'];
-        } else {
-            return ['success' => false, 'error' => 'Error de base de datos: ' . $e->getMessage()];
+            return ['success' => false, 'error' => 'Paciente ya existe'];
         }
+
+        return [
+            'success' => false,
+            'error' => 'Error BD: ' . $e->getMessage()
+        ];
     }
 }
-
 function Mostrar_todo_categoria(){
   $conexion = $this->createConnection();
   $sql = "CALL Mostrar_todo_categoria()";
@@ -297,6 +318,17 @@ Function Eliminar_Radiografia($id_radiografia){
     $sql = "CALL Eliminar_Radiografia(?)";
     $stmt = $conexion->prepare($sql);
     $stmt->bind_param("i", $id_radiografia);
+    if ($stmt->execute()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+Function Eliminar_Paciente($id_paciente){
+ $conexion = $this->createConnection();
+    $sql = "CALL Eliminar_Paciente(?)";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("i", $id_paciente);
     if ($stmt->execute()) {
         return true;
     } else {

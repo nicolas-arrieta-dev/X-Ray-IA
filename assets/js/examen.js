@@ -192,3 +192,26 @@ function closeNotification() {
 }
 
 
+function confirmDelete(id) {
+    if (confirm("¿Estás seguro de que deseas eliminar este paciente?")) {
+        fetch('eliminar_paciente.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'id=' + encodeURIComponent(id)
+        })
+        .then(response => response.text())
+        .then(data => {
+            if (data.trim() === 'ok') {
+                 window.location.href = `consultar.php?ms=✅El paciente se eliminó correctamente&type=ok`;
+            } else {
+                window.location.href = `consultar.php?ms=❌Error al eliminar el paciente&type=error`;
+            }
+        })
+        .catch(error => {
+            console.error("Error de red:", error);
+            window.location.href = `consultar.php?ms=❌No se pudo encontrar el servidor&type=error`;
+        });;
+    }
+}

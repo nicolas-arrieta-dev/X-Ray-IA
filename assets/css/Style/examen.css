@@ -217,10 +217,11 @@
 
    /* Main Content */
    .main-content {
-       padding: 40px 20px 100px;
-       max-width: 1200px;
-       margin: 0 auto;
-   }
+    padding: 40px 20px 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+    }
+
 
    .section-header {
        text-align: center;
@@ -246,14 +247,17 @@
 
    /* Form Styles */
    .patient-form {
-       background-color: var(--card-bg);
-       padding: 35px;
-       border-radius: 20px;
-       box-shadow: var(--shadow);
-       transition: var(--transition);
-       max-width: 900px;
-       margin: 0 auto;
-   }
+    background-color: var(--card-bg);
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+
+    width: 100%;              /* ocupa todo el ancho disponible */
+    max-width: 100%;          /* elimina límite de 900px */
+    margin: 0;                /* quita centrado fijo */
+    }
+
 
    .patient-form:hover {
        transform: translateY(-5px);

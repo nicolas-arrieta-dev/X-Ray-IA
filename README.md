@@ -104,3 +104,20 @@ Jorge Morales
 GitHub: https://github.com/ingjorgemorales
 
 Participamos en el desarrollo de la plataforma, integrando el sistema web, la gestión de información, el visor de radiografías y el componente de inteligencia artificial para el análisis de imágenes médicas.
+
+<img width="640" height="640" alt="dab1e2ce8c0f78f710ed" src="https://github.com/user-attachments/assets/4ae87933-bf4d-4495-8f20-16ae4fce3182" />
+<img width="597" height="340" alt="image" src="https://github.com/user-attachments/assets/89f03acb-dfac-4f4b-8d1a-17d98596bc84" />
+<img width="567" height="253" alt="image" src="https://github.com/user-attachments/assets/ac30dafb-e315-4f38-8887-442f37130ec5" />
+<img width="567" height="251" alt="image" src="https://github.com/user-attachments/assets/8795959a-711b-461e-99ed-ec07fb944c54" />
+<img width="567" height="254" alt="image" src="https://github.com/user-attachments/assets/2d6184c0-15f7-436d-bff9-bedf0b15137b" />
+<img width="567" height="251" alt="image" src="https://github.com/user-attachments/assets/ca96be53-8b3a-4ebd-8d6a-7913592cca6a" />
+<img width="567" height="254" alt="image" src="https://github.com/user-attachments/assets/63f7847d-56be-47a4-a7e4-e7e03f79a6ba" />
+<img width="567" height="252" alt="image" src="https://github.com/user-attachments/assets/2b881912-fad0-4877-90bb-4fc6d6a126f5" />
+<img width="567" height="249" alt="image" src="https://github.com/user-attachments/assets/ec785d62-5c74-486b-a207-df3972972bbf" />
+
+
+
+
+
+
+
